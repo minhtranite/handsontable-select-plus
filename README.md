@@ -1,0 +1,1 @@
+# Handsontable select plus
