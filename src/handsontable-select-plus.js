@@ -216,6 +216,7 @@
   ARROW.appendChild(document.createTextNode(String.fromCharCode(9660)));
 
   var SelectPlusRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+    value = value || '';
     var items = cellProperties.items || [];
     var item = null;
     for (var i = 0; i < items.length; i++) {
