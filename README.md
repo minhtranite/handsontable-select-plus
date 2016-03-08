@@ -37,7 +37,6 @@ bower install --save handsontable-select-plus
         {},
         {
           type: 'selectPlus',
-          form: true, // true to show form, false to hide form, default true
           items: [
             {
               label: 'Afghanistan',
