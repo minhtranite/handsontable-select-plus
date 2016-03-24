@@ -8,6 +8,7 @@
 
   SelectPlusEditor.prototype.reset = function () {
     this.timer = null;
+    this.items = [];
     this.filteredItems = [];
     this.selectedIndex = -1;
     this.highlightedIndex = -1;
@@ -24,9 +25,14 @@
     this.instance.rootElement.appendChild(this.selectPlusWrapper);
   };
 
-  SelectPlusEditor.prototype.prepare = function () {
+  SelectPlusEditor.prototype.prepare = function (row, col, prop, td, value, cellProperties) {
     Handsontable.editors.TextEditor.prototype.prepare.apply(this, arguments);
-    this.filteredItems = this.cellProperties.items;
+    var items = this.cellProperties.items || [];
+    if (typeof items === 'function') {
+      items = items(row, col, prop, td, value, cellProperties);
+    }
+    this.items = items;
+    this.filteredItems = items;
     this.renderList();
   };
 
@@ -117,7 +123,7 @@
   };
 
   SelectPlusEditor.prototype.filterItems = function (value) {
-    var items = this.cellProperties.items || [];
+    var items = this.items;
     this.filteredItems = items.filter(function (item) {
       var label = item.label || '';
       return label.toLowerCase().indexOf(value.toLowerCase()) === 0;
@@ -218,6 +224,9 @@
   var SelectPlusRenderer = function (instance, td, row, col, prop, value, cellProperties) {
     value = value || '';
     var items = cellProperties.items || [];
+    if (typeof items === 'function') {
+      items = items(row, col, prop, td, value, cellProperties);
+    }
     var item = null;
     for (var i = 0; i < items.length; i++) {
       if (items[i].value === value) {
