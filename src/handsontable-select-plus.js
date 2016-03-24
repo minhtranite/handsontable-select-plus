@@ -53,7 +53,7 @@
     var index = -1;
     for (var i = 0; i < this.filteredItems.length; i++) {
       var item = this.filteredItems[i];
-      if (item.value === value) {
+      if (String(item.value) === String(value)) {
         index = i;
         break;
       }
