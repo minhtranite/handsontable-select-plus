@@ -29,7 +29,7 @@
     Handsontable.editors.TextEditor.prototype.prepare.apply(this, arguments);
     var items = this.cellProperties.items || [];
     if (typeof items === 'function') {
-      items = items(row, col, prop, td, value, cellProperties);
+      items = items(row, col, prop, td, value, cellProperties, this.instance);
     }
     this.items = items;
     this.filteredItems = items;
@@ -225,7 +225,7 @@
     value = value || '';
     var items = cellProperties.items || [];
     if (typeof items === 'function') {
-      items = items(row, col, prop, td, value, cellProperties);
+      items = items(row, col, prop, td, value, cellProperties, instance);
     }
     var item = null;
     for (var i = 0; i < items.length; i++) {

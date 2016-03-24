@@ -1019,8 +1019,8 @@
         {},
         {
           type: 'selectPlus',
-          items: function (row, col, prop, td, value, cellProperties) {
-            console.log(row, col, prop, td, value, cellProperties);
+          items: function (row, col, prop, td, value, cellProperties, instance) {
+            console.log(row, col, prop, td, value, cellProperties, instance);
             return items;
           }
         }

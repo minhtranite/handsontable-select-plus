@@ -1,6 +1,6 @@
 {
   "name": "handsontable-select-plus",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": ["dist/handsontable-select-plus.min.js", "dist/handsontable-select-plus.min.css"],
   "authors": [
